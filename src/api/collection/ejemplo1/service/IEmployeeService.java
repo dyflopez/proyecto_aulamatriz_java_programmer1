@@ -2,6 +2,8 @@ package api.collection.ejemplo1.service;
 
 import api.collection.ejemplo1.model.Employee;
 
+import java.util.List;
+
 public interface IEmployeeService {
 
     void  create (Employee employee);
@@ -16,4 +18,5 @@ public interface IEmployeeService {
     void delete(String id);
     void disable (String id);
 
+    List<Employee> getSalaryLowLimit(double salary);
 }

@@ -16,7 +16,8 @@ public class Front {
                 4. update method 2
                 5. delete employee
                 6. disable
-                7. exit
+                7. find salary with salary low
+                8. exit
                 """);
 
             //TODO Ajustar el codigo como tarea
@@ -32,6 +33,7 @@ public class Front {
         Employee employee  = new Employee();
 
         //TODO Validar que los datos no sean incorrectos
+        //TODO no permite agregar espacios entre textos
         System.out.println("type name of employee");
         employee.setName(inputValue.next());
         System.out.println("type lastname of employee");
@@ -55,6 +57,11 @@ public class Front {
     public static String inputId(){
         System.out.println("type id of employee");
         return inputValue.next();
+    }
+
+    public static double inputSalaryRate(){
+        System.out.println("type Salary amount rate");
+        return inputValue.nextDouble();
     }
 
 }

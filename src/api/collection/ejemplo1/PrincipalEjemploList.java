@@ -17,14 +17,15 @@ public class PrincipalEjemploList {
      * Actualizar empelado
      * mostrar empleado
      * eliminar todos los empledos
-     * filtrar empelado por sueldo menor
-     * filtrar empleado por sueldo mayor
-     * simular aumento de sueldo
+     * filtrar empelado por sueldo menor a el salario de base
+     * filtrar empleado por sueldo mayor al indicado
+     * simular aumento de sueldo al % que indique el ususuario
      */
     public static void main(String[] args) {
 
         EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
         String id;
+        double salary;
         int option;
         do{
             option=Front.menu();
@@ -64,8 +65,13 @@ public class PrincipalEjemploList {
                     id = Front.inputId();
                     employeeService.disable(id);
                     break;
+                case 7:
+                    salary = Front.inputSalaryRate();
+                   var listEmployee=  employeeService.getSalaryLowLimit(salary);
+                    System.out.println(listEmployee);
+                    break;
             }
-        }while (option !=7);
+        }while (option !=8);
         System.out.println("end code");
     }
 

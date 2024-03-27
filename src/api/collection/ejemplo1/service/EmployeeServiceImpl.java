@@ -5,7 +5,7 @@ import api.collection.ejemplo1.model.Employee;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeServiceImpl implements  IEmployeeService{
+public class EmployeeServiceImpl implements  IEmployeeService {
 
     private List<Employee> employeeList;
 
@@ -21,34 +21,34 @@ public class EmployeeServiceImpl implements  IEmployeeService{
 
     @Override
     public void updateForm1(String id, Employee employee) {
-        for (int i =0;i<employeeList.size();i++){
-            if(employeeList.get(i).getId().equals(id)){
-                employeeList.set(i,employee);
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getId().equals(id)) {
+                employeeList.set(i, employee);
             }
         }
     }
 
     @Override
     public Employee findById(String id) {
-        for(int i =0;i<employeeList.size();i++){
+        for (int i = 0; i < employeeList.size(); i++) {
             return employeeList.get(i);
         }
-        return  null;
+        return null;
     }
 
     @Override
     public void updateForm2(Employee employee) {
-        for (int i =0;i<employeeList.size();i++){
-            if(employeeList.get(i).getId().equals(employee.getId())){
-                employeeList.set(i,employee);
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getId().equals(employee.getId())) {
+                employeeList.set(i, employee);
             }
         }
     }
 
     @Override
     public void delete(String id) {
-        for (int i =0;i<employeeList.size();i++){
-            if(employeeList.get(i).getId().equals(id)){
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getId().equals(id)) {
                 employeeList.remove(employeeList.get(i));
             }
         }
@@ -56,13 +56,27 @@ public class EmployeeServiceImpl implements  IEmployeeService{
 
     @Override
     public void disable(String id) {
-        for (int i =0;i<employeeList.size();i++){
-            if(employeeList.get(i).getId().equals(id)){
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getId().equals(id)) {
                 employeeList.get(i).setActive(false);
             }
         }
     }
 
+    @Override
+    public List<Employee> getSalaryLowLimit(double salary) {
+
+        List<Employee>  listEmployeeLowSalary = new ArrayList<>();
+
+        for(Employee employee : employeeList  ){
+            if(employee.getSalary()<=salary){
+                listEmployeeLowSalary.add(employee);
+            }
+        }
+        return listEmployeeLowSalary;
+    }
+
+    //TODO AGREGAR EL METODO A LA INTERFAZ
     public  void showEmployees(){
         if(employeeList.isEmpty()){
             System.out.println("list employees are empty");
