@@ -24,7 +24,7 @@ public class CalculadoraBasica implements ICalculadora{
 
     @Override
     public double multiplicacion(int valor1, int valor2) {
-        System.out.println("ejemlo commit");
+        System.out.println("ejemplo commit");
         return 0;
     }
 
