@@ -1,4 +1,4 @@
-package mejoras.interfaces;
+package mejoras.interfaces.funcionales;
 
 public interface MyInterface {
     default void miMetodo(){

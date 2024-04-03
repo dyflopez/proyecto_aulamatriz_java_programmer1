@@ -1,4 +1,4 @@
-package mejoras.interfaces;
+package mejoras.interfaces.funcionales;
 
 public class MainMejorasI {
     public static void main(String[] args) {
@@ -8,13 +8,26 @@ public class MainMejorasI {
          *  que se pueden invocar utilizando el nombre de la interfaz
          *   (estos metoso no son implementados solo se usan)
          */
-        //MyInterface.metodoStatico();
 
-        MyInterface myInterface = new MyInterface() {};
-        myInterface.miMetodo();
+        //las exprecines lambda son identificadas con ->
+        //Estructura de lambda
+        /**
+         * ()-> ...;
+         * (valor, valor) -> ...;
+         * (valor, valor) -> {....};
+         */
 
-        EjemploInterfaz ejemploInterfaz = new EjemploInterfaz();
+        ICalculadora suma = (valor1, valor2) ->  valor1+valor2;
+        ICalculadora resta = (valor1, valor2) ->  valor1-valor2;
+
+        int restSum = suma.operacion(10,10);
+        int restResta = resta.operacion(10,10);
+
+        ICalculadora.showMessageStatic(restSum);
+
+
 
 
     }
+
 }
