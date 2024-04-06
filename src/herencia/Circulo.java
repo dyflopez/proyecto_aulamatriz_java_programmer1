@@ -1,5 +1,7 @@
 package herencia;
 
+import java.util.List;
+
 public class Circulo extends  Figura{
 
     private double radio;
@@ -25,5 +27,10 @@ public class Circulo extends  Figura{
 
     public int calcularRadio(int radioAuc){
         return (int) radio+radioAuc;
+    }
+
+
+    public static <T> void imprimir(List<T> list){
+
     }
 }

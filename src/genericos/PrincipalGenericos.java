@@ -1,6 +1,10 @@
 package genericos;
 
+import api.collection.ejemplo1.model.Persona;
 import com.sun.tools.javac.Main;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PrincipalGenericos {
 
@@ -38,5 +42,22 @@ public class PrincipalGenericos {
         integer.addElement(2);
         System.out.println(integer.getElement(1));
 
+
+        System.out.println("**************************");
+
+        List<String> nombres = new ArrayList<>();
+
+        nombres.add("daniel");
+        nombres.add("daniel");
+        nombres.add("daniel");
+        nombres.add("daniel");
+
+        ListaGenerica.imprimir(nombres);
+
+        List<Persona> empelados = new ArrayList<>();
+
+        empelados.add(new Persona("String name", "String name", "String name", "String name", "String name"));
+
+        ListaGenerica.imprimir(empelados);
     }
 }
