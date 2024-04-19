@@ -1,5 +1,8 @@
 package mejoras.interfaces.funcionales;
 
+import java.util.Random;
+import java.util.function.Supplier;
+
 public class MainMejorasI {
     public static void main(String[] args) {
         /**
@@ -24,6 +27,9 @@ public class MainMejorasI {
         int restResta = resta.operacion(10,10);
 
         ICalculadora.showMessageStatic(restSum);
+        Supplier<Integer>  generateRandomNumber = () -> new  Random().nextInt(100);
+
+        System.out.println(generateRandomNumber.get());
 
 
 

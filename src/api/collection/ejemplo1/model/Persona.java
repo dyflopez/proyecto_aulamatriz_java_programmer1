@@ -1,11 +1,19 @@
 package api.collection.ejemplo1.model;
 
-public class Persona {
+import java.beans.Customizer;
+import java.beans.PropertyChangeListener;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+
+public class Persona implements Supplier,Predicate, Customizer {
     private  String name;
     private  String lastname;
     private String document;
     private String address;
     private String phoneNumber;
+
+    public int edad;
+
 
 
     public Persona(String name, String lastname, String document, String address, String phoneNumber) {
@@ -68,5 +76,30 @@ public class Persona {
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
+    }
+
+    @Override
+    public void setObject(Object bean) {
+
+    }
+
+    @Override
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+
+    }
+
+    @Override
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+
+    }
+
+    @Override
+    public boolean test(Object o) {
+        return false;
+    }
+
+    @Override
+    public Object get() {
+        return null;
     }
 }
