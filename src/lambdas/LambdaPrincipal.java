@@ -29,8 +29,6 @@ public class LambdaPrincipal {
          *  Mucho mas facil la concurrencia o manejo de hilosyo
          *  Mayor redimiento
          *
-         *
-         *
          * Interfaces funcionales con labnda
          *
          * Predicate
