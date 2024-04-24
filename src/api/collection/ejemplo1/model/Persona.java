@@ -11,6 +11,7 @@ public class Persona implements Supplier,Predicate, Customizer {
     private String document;
     private String address;
     private String phoneNumber;
+    private String estado;
 
     public int edad;
 
@@ -101,5 +102,13 @@ public class Persona implements Supplier,Predicate, Customizer {
     @Override
     public Object get() {
         return null;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
