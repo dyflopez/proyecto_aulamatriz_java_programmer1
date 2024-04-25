@@ -2,7 +2,7 @@ package streams;
 
 import api.collection.ejemplo1.model.Persona;
 
-import java.lang.reflect.Array;
+
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -200,7 +200,7 @@ public class PrincipalStreams {
                 sum += num * num;
             }
         }
-
+/// Dada una lista de nombres, encuentra el nombre más largo. si no retornar , ninguno
     }
 
     public static List<Persona> countStatus (List<Persona> personas , String estado){
