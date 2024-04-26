@@ -9,7 +9,6 @@ public class ConnectionDB {
     private  String user="admin";
 
     private String dbName = "user_db";
-
     /**
      * Checked Exceptions : Son las que el compilador/java obliga a manejar
      * unChecked Exception : Son excepciones que ocurren en tiempo de ejecucion .
