@@ -15,18 +15,16 @@ public class ConnectionDB {
      * unChecked Exception : Son excepciones que ocurren en tiempo de ejecucion .
      *     NullPointerException
      */
-    public ConnectionDB()   {
+    public  Connection ConnectionDB()   {
         try{
             Connection connection = DriverManager.getConnection(this.url+this.dbName,this.user,this.password);
             System.out.println("Se conecto correctamente");
+            return connection;
         }catch (Exception e){
             System.err.println(e.getCause() + " " + e.getMessage());
+            return  null;
         }finally {
             System.out.println("Se  ejecuto metodo para la conexion con la base de datos");
         }
-    }
-
-    public static void main(String[] args) {
-        ConnectionDB connectionDB = new ConnectionDB();
     }
 }
