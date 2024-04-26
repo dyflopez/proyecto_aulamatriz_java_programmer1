@@ -20,6 +20,7 @@ public class PrincipalJDBC {
                 "lastname varchar(20) );";
 
 
+
         /**
          *
          * createStatemet  me ayuda crear el Statemet
@@ -28,10 +29,10 @@ public class PrincipalJDBC {
          *  ExecuteUpdate(String sql) :  Ejecuta una consulta SQL que actualiza la base de de datos y devuelve
          *  el numero de filas afectadas
          *  Execute(String sql): Ejecuta una consulta SQL , Puede realizar un proceso de seleccion , acutalizacion
-         *  DML DDL .
+         *  DML DDL
          */
-        statement.execute(createTableUser);
+        int valor = statement.executeUpdate(createTableUser);
 
-        System.out.println("tabla creada");
+        System.out.println(valor);
     }
 }
