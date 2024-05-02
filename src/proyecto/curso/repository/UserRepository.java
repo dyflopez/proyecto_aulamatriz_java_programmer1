@@ -5,7 +5,10 @@ import proyecto.curso.model.UserEntity;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserRepository {
 
@@ -55,6 +58,43 @@ public class UserRepository {
         }catch (Exception e){
             System.out.println(e.getCause()  + " " + e.getMessage());
         }
+    }
+
+
+    public List<UserEntity> findAll(){
+        List<UserEntity> userList = new ArrayList<>();
+        try {
+
+
+            String query;
+
+            ConnectionDB connectionDB = new ConnectionDB();
+
+            Connection connection = connectionDB.ConnectionDB();
+
+            Statement statement = connection.createStatement();
+
+
+            query = "SELECT * FROM  user";
+
+           ResultSet resultSet =  statement.executeQuery(query);
+
+           var meta = resultSet.getMetaData();
+
+           var numColumns = meta.getColumnCount();
+
+            while (resultSet.next()){
+
+                userList.add(new UserEntity( resultSet.getInt("id") ,
+                        resultSet.getString("name"),
+                        resultSet.getString("lastname")));
+            }
+
+
+        }catch (Exception e){
+            System.err.println(e.getCause() + " " + e.getMessage());
+        }
+        return userList;
     }
 
 }

@@ -19,6 +19,8 @@ public class AdminTablesImpl implements IAdminTables {
 
         connectionDB  = new ConnectionDB();
 
+        createTableProduct = new CreateTableProduct();
+
         var connection = connectionDB.ConnectionDB();
             try{
                 this.createTableProduct.up(connection.createStatement());

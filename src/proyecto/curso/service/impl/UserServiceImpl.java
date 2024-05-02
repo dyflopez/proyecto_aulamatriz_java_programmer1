@@ -1,5 +1,6 @@
 package proyecto.curso.service.impl;
 
+import proyecto.curso.handler.exception.MyCustomException;
 import proyecto.curso.model.UserEntity;
 import proyecto.curso.repository.UserRepository;
 import proyecto.curso.service.IUserService;
@@ -11,8 +12,20 @@ public class UserServiceImpl implements IUserService {
     private UserRepository userRepository = new UserRepository();
 
     @Override
-    public void create1(UserEntity user) {
+    public void create1(UserEntity user) throws MyCustomException {
+
+        int tamanoName = user.getName().length();
+
+        if (user.getId() !=0) {
+            throw new IllegalArgumentException ("El id no puede tener ningun valor");
+        }
+        if(tamanoName<3){
+            throw new MyCustomException("El nombre de la persona no puede ser menor a 3 caracteres");
+        }
+
+
         this.userRepository.createForm1(user);
+
     }
 
     @Override
@@ -22,7 +35,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<UserEntity> findAll() {
-        return null;
+        return this.userRepository.findAll();
     }
 
     @Override
