@@ -1,10 +1,12 @@
 package proyecto.curso.controller;
 
+import org.w3c.dom.ls.LSOutput;
 import proyecto.curso.handler.exception.MyCustomException;
 import proyecto.curso.model.UserEntity;
 import proyecto.curso.service.impl.AdminTablesImpl;
 import proyecto.curso.service.impl.UserServiceImpl;
 
+import javax.swing.*;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -35,8 +37,17 @@ public class UserController {
 
 
         UserController controller = null;//= new UserController();
+        controller = (controller != null) ? controller  : new UserController();
+        if((controller != null)){
+            controller = controller;
+        }else{
+            controller = new UserController();
+            JOptionPane.showInputDialog("hols");
+        }
 try {
+
     assert controller != null : "la cadena no puede ser null";
+    //validacion ? "Si es verdadero devuelce esto": "si es falso devuelve es"
 }catch (Exception e){
     System.out.println(e.getMessage());
 }
