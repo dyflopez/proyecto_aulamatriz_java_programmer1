@@ -1,10 +1,8 @@
 package concurrencia.mejora;
 
 import java.sql.Time;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.time.LocalDateTime;
+import java.util.concurrent.*;
 
 public class ExecutorServiceThread {
 
@@ -17,18 +15,66 @@ public class ExecutorServiceThread {
      * newShcaduledThreadPool : ExecutorService.newShcaduledThreadPool ejecuta tareas periodicas
      */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
         ExecutorService newCachedThreadPool = Executors.newCachedThreadPool(); // Permite ejecutar hilos a discrecion o dinamicamente
-        ExecutorService newFixedThreadPool =  Executors.newFixedThreadPool(2); //limite de hilos
-        ExecutorService newSingleThreadExecutor =  Executors.newSingleThreadExecutor(); // solo permite un unico hilo de ejecucion
+        ExecutorService newFixedThreadPool = Executors.newFixedThreadPool(2); //limite de hilos
+        ExecutorService newSingleThreadExecutor = Executors.newSingleThreadExecutor(); // solo permite un unico hilo de ejecucion
         //  solamente puede usar un hilo Single - crear solo un hilo
-        ScheduledExecutorService thread =  Executors.newSingleThreadScheduledExecutor();
 
-        ScheduledExecutorService thread1 =  Executors.newScheduledThreadPool(1);
-        thread1.scheduleWithFixedDelay(new ThreadCount(),5 ,10,TimeUnit.SECONDS);
+        Callable<Integer> sumValues = ()->{
+            int sum=0;
+            for (int i =0 ; i<2;i++){
+                sum+=i;
+                Thread.sleep(1000);
+            }
+            return  sum;
+        };
+
+
+
+        //
+        ScheduledExecutorService thread = Executors.newSingleThreadScheduledExecutor();
+
+        ScheduledExecutorService thread1 = Executors.newScheduledThreadPool(1);
+        /*thread1.scheduleWithFixedDelay(new ThreadCount(),0 ,10,TimeUnit.SECONDS);
         thread1.scheduleWithFixedDelay(new ThreadCount(),1 ,10,TimeUnit.SECONDS);
-        thread1.scheduleWithFixedDelay(new ThreadCount(),0 ,10,TimeUnit.SECONDS);
-       //Callable
+        thread1.scheduleWithFixedDelay(new ThreadCount(),0 ,10,TimeUnit.SECONDS);*/
+
+
+        ExecutorService hilo = Executors.newFixedThreadPool(1);
+
+        FutureTask<Integer> task = new FutureTask<>(sumValues);
+
+
+        Thread thread2 = new Thread(task);
+
+        thread2.start();
+
+        while (!task.isDone()){
+            System.out.println("Esperando hilo");
+        }
+        System.out.println("suma*******");
+        System.out.println(task.get());
+
+
+
+        /*int i =0;
+        while(i<10){
+            System.out.println("ejecucion for oteracion " + i +" " + LocalDateTime.now());
+            i++;
+            Thread.sleep(2000);
+        }*/
+
+        /**
+         * los hilos
+         *
+         *
+         */
+
+        //Callable
+        //llamado al hilo Callable ----- demore n
+        //Temrino --------
+        //cocmo esta el hilo
 
     }
 }
